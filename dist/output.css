@@ -1078,6 +1078,12 @@ body::selection {
   color: rgb(248 248 248 / var(--tw-text-opacity));
 }
 
+@media (min-width: 640px) {
+  .sm\:w-full {
+    width: 100%;
+  }
+}
+
 @media (min-width: 1024px) {
   .lg\:static {
     position: static;
@@ -1097,6 +1103,10 @@ body::selection {
 
   .lg\:hidden {
     display: none;
+  }
+
+  .lg\:w-\[500px\] {
+    width: 500px;
   }
 
   .lg\:max-w-full {
