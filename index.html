@@ -98,6 +98,18 @@
           </button>
         </div>
         <form class="lg:w-[500px] sm:w-full" name="laporan">
+          <!-- no -->
+          <div class="group text-dark dark:text-lighter pt-5">
+            <label for="nama-kegiatan" class="text-md"
+              >No <span class="text-alert">*</span></label
+            >
+            <input
+              type="text"
+              name="no"
+              id="noCell"
+              class="border border-dark rounded-md block w-full mt-1 focus:border-dark px-2 py-1 dark:text-dark"
+            />
+          </div>
           <!-- nama kegiatan -->
           <div class="group text-dark dark:text-lighter pt-5">
             <label for="nama-kegiatan" class="text-md"
@@ -105,7 +117,7 @@
             >
             <input
               type="text"
-              name="nama_kegiatan"
+              name="nama"
               class="border border-dark rounded-md block w-full mt-1 focus:border-dark px-2 py-1 dark:text-dark"
               required
             />
@@ -116,7 +128,7 @@
               >Jenis Kegiatan <span class="text-alert">*</span></label
             >
             <select
-              name="jenis_kegiatan"
+              name="jenis"
               id="jenis-kegiatan"
               class="rounded-md block mt-1 w-[200px] border border-dark px-2 py-1 dark:text-dark"
               required
@@ -132,7 +144,7 @@
             >
             <input
               type="date"
-              name="tanggal_kegiatan"
+              name="tanggal"
               class="border border-dark rounded-md block w-full mt-1 focus:border-dark px-2 py-1 dark:text-dark"
               required
             />
@@ -143,7 +155,7 @@
               >Uraian Kegiatan <span class="text-alert">*</span></label
             >
             <textarea
-              name="uraian_kegiatan"
+              name="uraian"
               id="uraian"
               rows="5"
               class="block border border-dark rounded-md w-full dark:text-dark px-2 py-1"
@@ -155,27 +167,42 @@
               >Target Capaian <span class="text-alert">*</span></label
             >
             <textarea
-              name="target_capaian"
+              name="target"
               id="target"
               rows="5"
               class="block border border-dark rounded-md w-full dark:text-dark px-2 py-1"
               required
             ></textarea>
           </div>
-          <!-- <div class="group text-dark dark:text-lighter pt-5">
+          <div class="group text-dark dark:text-lighter pt-5">
             <label for="bukti"
               >Bukti Laporan <span class="text-alert">*</span></label
             >
             <input
               type="file"
-              id="bukti"
-              name="bukti_laporan"
+              name="buktis"
+              id="buktis"
               class="border border-dark rounded-md block w-full mt-1 focus:border-dark px-2 py-1 dark:text-dark"
               accept="image/*"
-              required
             />
+            <input type="hidden" id="buktisEnc" name="buktisEnc" />
+
+            <!-- Script JavaScript untuk mengenkripsi gambar menjadi base64 -->
+            <script>
+              document
+                .getElementById("buktis")
+                .addEventListener("change", function (event) {
+                  var file = event.target.files[0];
+                  var reader = new FileReader();
+                  reader.onloadend = function () {
+                    document.getElementById("buktisEnc").value =
+                      reader.result.split(",")[1];
+                  };
+                  reader.readAsDataURL(file);
+                });
+            </script>
           </div>
-          <img id="img_preview" src="" alt="" /> -->
+          <img id="img_preview" src="" alt="" />
           <button
             type="submit"
             id="btn-kirim"
@@ -193,10 +220,11 @@
     <script src="dist/js/script.js"></script>
     <script>
       const scriptURL =
-        "https://script.google.com/macros/s/AKfycbzMF8Mp5NM3arFQM_FfjIg0b2OBKgup7s897OWH3WsIqM0RcmrUAtswS7Nl6H-sSVI/exec";
+        "https://script.google.com/macros/s/AKfycbwbL3dtGnoE0x54o9xMZgab7mb1M-GnfxDOjScTlg9vrmrbTooi1atE06Lgyem6DYGQ/exec";
       const form = document.forms["laporan"];
       const btnKirim = document.querySelector("#btn-kirim");
       const alert = document.querySelector("#alert");
+      // Tampilkan nomor baris di dalam formulir
 
       form.addEventListener("submit", (e) => {
         e.preventDefault();
@@ -208,7 +236,6 @@
             // form reset
             form.reset();
             console.log("Success!", response);
-            img.src = "";
           })
           .catch((error) => console.error("Error!", error.message));
       });

@@ -7,10 +7,6 @@ body {
   @apply bg-lighter dark:bg-dark selection:bg-dark selection:text-lighter dark:selection:bg-lighter dark:selection:text-dark;
 }
 
-.alert {
-    display: non
-}
-
 .close-line {
     @apply w-[30px] h-[2px] my-2 block bg-dark;
 }
@@ -33,7 +29,7 @@ body {
 }
 
 .hamburger-line {
-  @apply w-[30px] h-[2px] my-2 block bg-dark;
+  @apply w-[30px] h-[2px] my-2 block bg-dark dark:bg-lighter;
 }
 
 .hamburger-active span:nth-child(1) {

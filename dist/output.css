@@ -798,42 +798,6 @@ video {
   padding-top: 1.25rem;
 }
 
-.font-\[\] {
-  font-family: ;
-}
-
-.font-\[\"\"\] {
-  font-family: "";
-}
-
-.font-\[\'\'\] {
-  font-family: '';
-}
-
-.font-\[\'Timesnew\'\] {
-  font-family: 'Timesnew';
-}
-
-.font-\[\'Times\'\] {
-  font-family: 'Times';
-}
-
-.font-\[\'Timesnewroman\'\] {
-  font-family: 'Timesnewroman';
-}
-
-.font-\[\'T\'\] {
-  font-family: 'T';
-}
-
-.font-\[\'Poppins\'\] {
-  font-family: 'Poppins';
-}
-
-.font-\[\'Inter\'\] {
-  font-family: 'Inter';
-}
-
 .font-serif {
   font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
 }
@@ -961,10 +925,6 @@ body::selection {
   color: rgb(39 55 77 / var(--tw-text-opacity));
 }
 
-.alert {
-  display: non
-}
-
 .close-line {
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
@@ -1016,6 +976,11 @@ body::selection {
   width: 30px;
   --tw-bg-opacity: 1;
   background-color: rgb(39 55 77 / var(--tw-bg-opacity));
+}
+
+:is(.dark .hamburger-line) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(248 248 248 / var(--tw-bg-opacity));
 }
 
 .hamburger-active span:nth-child(1) {
